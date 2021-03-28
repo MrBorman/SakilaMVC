@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actors</title>
+</head>
+
+<style>
+
+    body {
+        background-image: linear-gradient(30deg,#A6A6A6,#D9D9D9);
+    }
+
+    table {
+        background-color: whitesmoke;
+        border: 1px solid #ccc;
+        border-spacing: 3px;
+        box-shadow: 10px 4px 10px 3px #404040;
+    }
+
+    td, th{
+        border: solid 1px #ccc;
+    }
+    .collapsed{
+        border-collapse: collapse;
+    }
+    .separated{
+        border-collapse: separate;
+    }
+</style>
+
+<body>
+<h3>Actors</h3>
+<hr/>
+<a href="/actors/new">Add new actor</a>
+<hr/>
+<table class="collapsed">
+    <tr><th>First Name</th><th>Last Name</th><th>Last update</th></tr>
+    <tr th:each="actor : ${actors}">
+        <td th:text="${actor.getFirst_name()}">VALUE</td>
+        <td th:text="${actor.getLast_name()}">VALUE</td>
+        <td> <a th:href="@{/actors/{id}(id=${actor.getActor_id()})}" th:text="${actor.getLast_update()}">VALUE</a></td>
+    </tr>
+</table>
+</body>
+</html>

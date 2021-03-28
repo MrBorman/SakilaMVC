@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update actor</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/actors/{id}(id=${actor.getActor_id})}" th:object="${actor}">
+    <label for="first_name">Enter first name: </label>
+    <input type="text" th:field="*{first_name}" id="first_name"/>
+    <label for="last_name">Enter last name: </label>
+    <input type="text" th:field="*{last_name}" id="last_name"/>
+    <br/>
+    <input type="submit" value="Update!"/>
+</form>
+
+</body>
+</html>
