@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 @Controller
 @RequestMapping("/actors")
-public class ActorController {
+public class ActorController{
 
     private final ActorDAO actorDAO;
 
@@ -19,7 +19,7 @@ public class ActorController {
     }
 
     @GetMapping()
-    public String index(Model model) throws SQLException {
+    public String index(Model model) {
         model.addAttribute("actors", actorDAO.index());
         return "actors/index";
     }

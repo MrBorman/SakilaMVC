@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Films</title>
+</head>
+
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #008CBA;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: whitesmoke;
+    }
+
+    #films {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #films td, #films th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #films tr:nth-child(even){background-color: #f2f2f2;}
+
+    #films tr:hover {background-color: #ddd;}
+
+    #films th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #008CBA;
+        color: white;
+    }
+    .button {
+        background-color: #008CBA;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/actors">Actors</a></li>
+    <li><a class="active" href="/films">Films</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+<h3>Films</h3>
+<hr/>
+<a href="/films/new" class="button">Add new film</a>
+<hr/>
+<table id="films">
+    <tr><th>Title</th><th>Description</th><th>Release year</th><th>Language id</th><th>Original language id</th><th>Rental duration</th><th>Rental rate</th><th>Length</th><th>Replacement cost</th><th>Rating</th><th>Special_features</th><th>Last update</th></tr>
+    <tr th:each="film : ${films}">
+        <td> <a th:href="@{/films/{id}(id=${film.getFilm_id()})}" th:text="${film.getTitle()}">VALUE</a></td>
+
+        <td th:text="${film.getDescription()}">VALUE</td>
+
+        <td th:text="${film.getRelease_year()}">VALUE</td>
+
+        <td th:text="${film.getLanguage_id()}">VALUE</td>
+
+        <td th:text="${film.getOriginal_language_id()}">VALUE</td>
+
+        <td th:text="${film.getRental_duration()}">VALUE</td>
+
+        <td th:text="${film.getRental_rate()}">VALUE</td>
+
+        <td th:text="${film.getLength()}">VALUE</td>
+
+        <td th:text="${film.getReplacement_cost()}">VALUE</td>
+
+        <td th:text="${film.getRating()}">VALUE</td>
+
+        <td th:text="${film.getSpecial_features()}">VALUE</td>
+
+        <td th:text="${film.getLast_update()}">VALUE</td>
+    </tr>
+</table>
+</body>
+</html>

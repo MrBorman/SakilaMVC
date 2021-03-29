@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New actor</title>
+    <title th:text="${film.getTitle()}">Title</title>
 </head>
 <style>
     ul {
@@ -70,20 +70,20 @@
 <body>
 <ul>
     <li><a href="/">Home</a></li>
-    <li><a class="active" href="/actors">Actors</a></li>
-    <li><a href="/films">Films</a></li>
+    <li><a href="/actors">Actors</a></li>
+    <li><a class="active" href="/films">Films</a></li>
     <li><a href="/about">About</a></li>
 </ul>
+<p th:text="${film.getTitle()}">VALUE</p>
+<p th:text="${film.getDescription()}">VALUE</p>
+<p th:text="${film.getRelease_year()}">VALUE</p>
+<p th:text="${film.getRating()}">VALUE</p>
 
-<form th:method="POST" th:action="@{/actors}" th:object="${actor}">
-    <label for="first_name">Enter first name: </label>
-    <input type="text" th:field="*{first_name}" id="first_name" placeholder="First name"/>
 
-    <label for="last_name">Enter last name: </label>
-    <input type="text" th:field="*{last_name}" id="last_name" placeholder="Last name"/>
-    <br/>
-    <input type="submit" value="Create!"/>
+<a th:href="@{/films/{id}/edit(id=${film.getFilm_id})}">Edit</a>
+</hr>
+<form th:method="DELETE" th:action="@{/films/{id}(id=${film.getFilm_id})}">
+    <input type="submit" value="Delete"/>
 </form>
-
 </body>
 </html>

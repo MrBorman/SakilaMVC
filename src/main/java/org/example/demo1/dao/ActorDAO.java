@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -22,7 +21,7 @@ public class ActorDAO {
     }
 
 
-    public List<Actor> index() throws SQLException {
+    public List<Actor> index() {
         return jdbcTemplate.query("SELECT * FROM actor", new BeanPropertyRowMapper<>(Actor.class));
     }
 

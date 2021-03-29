@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update film</title>
+</head>
+
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #008CBA;
+    }
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: whitesmoke;
+    }
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #008CBA;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #008CBA;
+    }
+
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
+
+<body>
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/actors">Actors</a></li>
+    <li><a class="active"  href="/films">Films</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+
+<form th:method="PATCH" th:action="@{/films/{id}(id=${film.getFilm_id})}" th:object="${film}">
+    <label for="title">Enter title: </label>
+    <input type="text" th:field="*{title}" id="title" placeholder="Title"/>
+
+    <label for="description">Enter description: </label>
+    <input type="text" th:field="*{description}" id="description" placeholder="Description"/>
+
+    <!--label for="release_year">Enter release_year: </label>
+    <input type="text" th:field="*{release_year}" id="release_year" placeholder="release_year"/-->
+
+    <label for="language_id">Enter language_id: </label>
+    <input type="text" th:field="*{language_id}" id="language_id" placeholder="language_id"/>
+
+    <label for="original_language_id">Enter original_language_id: </label>
+    <input type="text" th:field="*{original_language_id}" id="original_language_id" placeholder="original_language_id"/>
+
+    <label for="rental_duration">Enter rental_duration: </label>
+    <input type="text" th:field="*{rental_duration}" id="rental_duration" placeholder="rental_duration"/>
+
+    <label for="rental_rate">Enter rental_rate: </label>
+    <input type="text" th:field="*{rental_rate}" id="rental_rate" placeholder="rental_rate"/>
+
+    <label for="length">Enter length: </label>
+    <input type="text" th:field="*{length}" id="length" placeholder="length"/>
+
+    <label for="replacement_cost">Enter replacement_cost: </label>
+    <input type="text" th:field="*{replacement_cost}" id="replacement_cost" placeholder="replacement_cost"/>
+
+    <label for="rating">Enter rating: </label>
+    <input type="text" th:field="*{rating}" id="rating" placeholder="rating"/>
+
+    <label for="special_features">Enter special_features: </label>
+    <input type="text" th:field="*{special_features}" id="special_features" placeholder="special_features"/>
+
+    <br/>
+    <input type="submit" value="Update!"/>
+</form>
+
+</body>
+</html>

@@ -3,6 +3,7 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/actors/index.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/actors" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/first/calculator.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/first" />
       </map>
     </option>
