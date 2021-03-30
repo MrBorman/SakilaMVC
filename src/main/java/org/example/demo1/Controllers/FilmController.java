@@ -25,6 +25,7 @@ public class FilmController {
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("film", filmDAO.show(id));
+        model.addAttribute("actor_film", filmDAO.getActors(id));
         return "films/show";
     }
 

@@ -1,6 +1,8 @@
 package org.example.demo1.dao;
 
 import org.example.demo1.models.Actor;
+import org.example.demo1.models.ActorFilm;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -39,5 +41,9 @@ public class ActorDAO {
 
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM Actor WHERE actor_id=?", id);
+    }
+
+    public List<ActorFilm> getFilms(int id) {
+        return jdbcTemplate.query("select a.actor_id, a.first_name, a.last_name, f.film_id, f.title from film as f, actor as a, film_actor as fa where f.film_id=fa.film_id and a.actor_id=fa.actor_id and a.actor_id=?", new Object[]{id}, new ActorFilmMapper());
     }
 }

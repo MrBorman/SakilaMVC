@@ -66,6 +66,27 @@
         background-color: #f2f2f2;
         padding: 20px;
     }
+    #actors {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #actors td, #actors th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #actors tr:nth-child(even){background-color: #f2f2f2;}
+
+    #actors tr:hover {background-color: #ddd;}
+
+    #actors th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #008CBA;
+        color: white;
+    }
 </style>
 <body>
 <ul>
@@ -78,7 +99,11 @@
 <p th:text="${film.getDescription()}">VALUE</p>
 <p th:text="${film.getRelease_year()}">VALUE</p>
 <p th:text="${film.getRating()}">VALUE</p>
-
+<table id="actors">
+    <tr th:each="af : ${actor_film}">
+        <td> <a th:href="@{/actors/{id}(id=${af.getActor_id()})}" th:text="${af.getFirst_name()}">VALUE</a> <a th:text="${af.getLast_name()}">VALUE</a> </td>
+    </tr>
+</table>
 
 <a th:href="@{/films/{id}/edit(id=${film.getFilm_id})}">Edit</a>
 </hr>
